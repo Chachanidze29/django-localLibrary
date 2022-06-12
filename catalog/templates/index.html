@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Home</title>{% endblock title %}
+{% block content %}
+    <h1 class="text-4xl font-bold m-2 mt-1 ml-0">Local Library Home</h1>
+    <p class="text-2xl m-1 ml-0">Books:{{ num_books }}</p>
+    <p class="text-2xl m-1 ml-0">Instances:{{ num_instances }}</p>
+    <p class="text-2xl m-1 ml-0">Available instances:{{ num_instances_available }}</p>
+    <p class="text-2xl m-1 ml-0">Authors:{{ num_authors }}</p>
+{% endblock content %}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+{% load tailwind_tags %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block title %}<title>Local Library</title>{% endblock title %}
+    {% tailwind_css %}
+</head>
+<body>
+    <div class="flex items-start justify-between max-w-6xl mx-auto">
+        <header class="basis-1/5">
+            <nav class="flex flex-col items-center justify-between">
+                <a class="p-2 m-1 text-xl text-blue-400 hover:text-blue-700" href="{% url 'index' %}">Home</a>
+                <a class="p-2 m-2 text-xl text-blue-400 hover:text-blue-700" href="">All Books</a>
+                <a class="p-2 m-2 text-xl text-blue-400 hover:text-blue-700" href="">All Authors</a>
+            </nav>
+        </header>
+        <main class="basis-3/5">
+            {% block content %} {% endblock content %}
+        </main>
+    </div>
+</body>
+</html>
