@@ -1,6 +1,11 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Author</h1>
-    <h1>{{ author.first_name }} {{ author.last_name }}</h1>
+    <h1 class="text-4xl">{{ author.first_name }} {{ author.last_name }}</h1>
+    <h2 class="text-xl mt-1 font-bold">Birth Date: <span class="font-normal">{{ author.date_of_birth }}</span></h2>
+    <h2 class="text-xl mt-1 font-bold">Death Date: <span class="font-normal">{{ author.date_of_death }}</span></h2>
+    <h1 class="text-4xl mt-10">Books:</h1>
+    {% for book in author.book_set.all %}
+        <a class="text-blue-500 text-2xl hover:text-blue-300" href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+    {% endfor %}
 {% endblock %}

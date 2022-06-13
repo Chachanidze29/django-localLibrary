@@ -1,6 +1,18 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Book</h1>
-    <h1>{{ book.title }}</h1>
+    <h1 class="text-4xl">Title: {{ book.title }}</h1>
+    <h2 class="text-xl mt-1 font-bold">Author: <a class="text-blue-500 font-normal hover:text-blue-300" href="{% url 'author-detail' book.author.pk %}">{{ book.author.first_name }} {{ book.author.last_name }}</a></h2>
+    <h2 class="text-xl font-bold mt-1">Summary: <span class="font-normal">{{ book.summary }}</span></h2>
+    <h2 class="text-xl font-bold mt-1">ISBN: <span class="font-normal">{{ book.isbn }}</span></h2>
+    <h2 class="text-xl font-bold mt-1">Genre: <span class="font-normal">{{ book.display_genre }}</span></h2>
+    <h1 class="text-4xl mt-10">Copies</h1>
+    {% for copy in book.bookinstance_set.all %}
+        <div class="flex flex-col items-start justify-between border-t-2 border-gray-200 mt-5">
+            <p class="text-2xl {% if copy.status == 'a' %}text-blue-500{% elif copy.status == 'm' %}text-red-500{% else %}text-yellow-500{% endif %}">{{ copy.get_status_display }}</p>
+            <h2 class="text-xl font-bold mt-1">Due Back: <span class="font-normal mt-2 text-2xl">{{ copy.due_back }}</span></h2>
+            <h2 class="text-xl font-bold mt-1">Imprint: <span class="font-normal mt-2 text-2xl">{{ copy.imprint }}</span></h2>
+            <h2 class="text-xl font-bold mt-1">ID: <span class="font-normal mt-2 text-2xl">{{ copy.id }}</span></h2>
+        </div>
+    {% endfor %}
 {% endblock %}
